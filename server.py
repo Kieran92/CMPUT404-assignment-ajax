@@ -62,7 +62,7 @@ myWorld = World()
 # I give this to you, this is how you get the raw body/data portion of a post in flask
 # this should come with flask but whatever, it's not my project.
 def flask_post_json():
-    '''Ah the joys of frameworks! They do so much work for you
+    '''Ah the joys of frameworks! Theywebservice can serve /static/index.html do so much work for you
        that they get in the way of sane operation!'''
     if (request.json != None):
         return request.json
@@ -74,27 +74,44 @@ def flask_post_json():
 @app.route("/")
 def hello():
     '''Return something coherent here.. perhaps redirect to /static/index.html '''
-    return None
+    return flask.redirect('http://127.0.0.1:5000/static/index.html', code = 302)
 
 @app.route("/entity/<entity>", methods=['POST','PUT'])
 def update(entity):
+    #todo
     '''update the entities via this interface'''
-    return None
+    newData = json.loads(request.data)
+    keys = json.dumps(newData.keys())
+    values = json.dumps(newData.values())
+    if request.method == 'POST':
+        for value in range(len(values)):
+            myWorld.update(entity,keys[value],values[value])
+    elif request.method == 'PUT':
+        myWorld.set(entity, flask_post_json())
+        
+    return flask.make_response(request.data)
 
 @app.route("/world", methods=['POST','GET'])    
 def world():
     '''you should probably return the world here'''
-    return None
+    if request.method == 'GET':
+        return flask.make_response(json.dumps(myWorld.world()))
+    elif request.method == 'POST':
+        return flask.make_response(json.dumps(myWorld.world()))  
+    
 
 @app.route("/entity/<entity>")    
 def get_entity(entity):
     '''This is the GET version of the entity interface, return a representation of the entity'''
-    return None
+    return flask.make_response(json.dumps(myWorld.get(entity)))
 
 @app.route("/clear", methods=['POST','GET'])
 def clear():
-    '''Clear the world out!'''
-    return None
+    if request.method == 'GET':
+        return flask.make_response(json.dumps(myWorld.clear()))
+
+    elif request.method == 'POST':
+        return flask.make_response(json.dumps(myWorld.clear()))
 
 if __name__ == "__main__":
     app.run()
