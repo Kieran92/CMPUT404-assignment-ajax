@@ -31,6 +31,12 @@ http://www.w3schools.com/json/json_eval.asp
 
 author: w3schools
 
+Lakers court image:
+
+http://grantland.com/features/nba-court-design-power-rankings/
+
+owner: grantland.com
+
 
 Consulted
 =========

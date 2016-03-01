@@ -26,13 +26,11 @@
   <body bgcolor="black" height="100%" width="100%"> 
         <style type="text/css" media = "screen">
         canvas{
-            background: url(https://kendramack.files.wordpress.com/2015/05/twilight-zone-door.jpg);
+            background: url(https://espngrantland.files.wordpress.com/2014/09/lalakers.jpg?w=1024&h=5617);
             background-size: 100%;
             display: block;
 
         }
-
-        body, canvas, canvas:active {cursor: url(http://images6.fanpop.com/image/photos/35400000/illuminati-eye-illuminati-35431561-119-120.jpg);} 
 
     </style>
     <canvas id="c" width="100%" height="100%" style="-webkit-tap-highlight-color: transparent;"></canvas> 
@@ -86,7 +84,7 @@ function drawCircle(context,entity) {
         //moveTo(x,y);
         fillStyle = entity["colour"];
         strokeStyle = fillStyle;
-        //fillRect(50, 50, 50, 50);
+        //fillRect(50, 50, 50, 50, false);
         arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);
 
         stroke(); 
@@ -275,16 +273,16 @@ mouse = (function() {
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'yellow', 'radius':30});
+    addEntityWithoutName({'x':x,'y':y,'colour':'yellow', 'radius':50});
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'yellow', 'radius':30});
+    addEntityWithoutName({'x':x,'y':y,'colour':'yellow', 'radius':50});
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
     addEntityWithoutName({'x':x,'y':y,'colour':'purple',
-                           'radius':30});
+                           'radius':50});
 });
 
 
