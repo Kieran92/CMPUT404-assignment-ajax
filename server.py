@@ -79,40 +79,27 @@ def hello():
 @app.route("/entity/<entity>", methods=['POST','PUT'])
 def update(entity):
     '''update the entities via this interface'''
-    #newData = json.loads(request.data)
-    #keys = json.dumps(newData.keys())
-    #values = json.dumps(newData.values())
-    #if request.method == 'POST':
-     #   for value in range(len(values)):
-     #       myWorld.update(entity,keys[value],values[value])
-    #elif request.method == 'PUT':
-     #   myWorld.set(entity, flask_post_json())
-    #return flask.make_response(json.dumps(myWorld.get(entity)))
     myWorld.set(entity, flask_post_json())
     return json.dumps(myWorld.get(entity))
 
 @app.route("/world", methods=['POST','GET'])    
 def world():
     '''you should probably return the world here'''
-    #if request.method == 'GET':
-     #   return flask.make_response(json.dumps(myWorld.world()))
-    #elif request.method == 'POST':
-     #   return flask.make_response(json.dumps(myWorld.world()))  
     return json.dumps(myWorld.world())
     
 
 @app.route("/entity/<entity>")    
 def get_entity(entity):
     '''This is the GET version of the entity interface, return a representation of the entity'''
-    return flask.make_response(json.dumps(myWorld.get(entity)))
+    return json.dumps(myWorld.get(entity))
 
 @app.route("/clear", methods=['POST','GET'])
 def clear():
-    if request.method == 'GET':
-        return flask.make_response(json.dumps(myWorld.clear()))
+    myWorld.clear()
+    return json.dumps(myWorld.world())
+    
 
-    elif request.method == 'POST':
-        return flask.make_response(json.dumps(myWorld.clear()))
+
 
 if __name__ == "__main__":
     app.run()
