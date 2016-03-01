@@ -273,28 +273,28 @@ mouse = (function() {
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'white', 'radius':30});
+    addEntityWithoutName({'x':x,'y':y,'colour':'white', 'radius':15,'opacity':Math.random()});
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'yellow', 'radius':30});
+    addEntityWithoutName({'x':x,'y':y,'colour':'yellow', 'radius':15,'opacity':Math.random()});
 });
 
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
     addEntityWithoutName({'x':x,'y':y,'colour':'purple',
-                           'radius':15});
+                           'radius':5,'opacity':Math.random()});
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
     addEntityWithoutName({'x':x,'y':y,'colour':'yellow',
-                           'radius':25});
+                           'radius':15,'opacity':Math.random()});
 });
 
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
     addEntityWithoutName({'x':x,'y':y,'colour':'black',
-                           'radius':30});
+                           'radius':25,'opacity':Math.random()});
 });
 
 
